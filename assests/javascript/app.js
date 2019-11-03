@@ -47,7 +47,13 @@ $(document).ready(function() {
       dateAdded: firebase.database.ServerValue.TIMESTAMP
     };
 
-    // Uploads to the database if all data fields are filled
+    // Checks for correct time input and checks that all fields are not black before uploading to the database
+    time = $("#first-train").val();
+    isValid = /^(?:[01][0-9]|2[0-3]):[0-5][0-9](?::[0-5][0-9])?$/.test(time);
+
+    if (isValid === false) {
+      alert("Incorrect time entry");
+    }
     if (
       trainName === "" ||
       destination === "" ||
@@ -56,11 +62,14 @@ $(document).ready(function() {
     ) {
       alert("Fill in all data fields please");
     } else {
-      database.ref().push(newTrain);
-      $("form")[0].reset();
-      $("#addTrainModal .close").click();
+      if (isValid === true) {
+        database.ref().push(newTrain);
+        $("form")[0].reset();
+        $("#addTrainModal .close").click();
+      }
     }
   });
+  // Math for Next Arrival Time and Minutes Away
   database.ref().on("child_added", function(childSnapshot) {
     let startTimeConverted = moment(
       childSnapshot.val().firstTrainTime,
@@ -74,8 +83,12 @@ $(document).ready(function() {
 
     // New row generator
     let newrow = $("<tr>");
-    newrow.append($("<td>" + childSnapshot.val().trainName + "</td>"));
-    newrow.append($("<td>" + childSnapshot.val().destination + "</td>"));
+    newrow.append(
+      $("<td class='text-center>" + childSnapshot.val().trainName + "</td>")
+    );
+    newrow.append(
+      $("<td class='text-center>" + childSnapshot.val().destination + "</td>")
+    );
     newrow.append(
       $("<td class='text-center'>" + childSnapshot.val().frequency + "</td>")
     );
@@ -93,7 +106,8 @@ $(document).ready(function() {
 
     $("#add-train-row").append(newrow);
   });
-  // Remove buton added to column with page refresh
+
+  // Remove button with page refresh after click
   $(document).on("click", ".arrival", function() {
     keyref = $(this).attr("data-key");
     database
@@ -108,6 +122,8 @@ $(document).ready(function() {
     $("#clock").html(current);
     setTimeout(currentTime, 1000);
   }
+
+  // Calls live page clock function
   currentTime();
 
   //Page reload to update train times every 60 seconds
