@@ -1,0 +1,20 @@
+body {
+  background-image: url("https://images.pexels.com/photos/567394/pexels-photo-567394.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260");
+  background-size: cover;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.jumbotron {
+  background: none;
+}
+.title-main {
+  font-family: "Zilla Slab Highlight", cursive;
+  font-size: 40px;
+  text-shadow: 2px 2px 5px black;
+}
+.title-second {
+  font-family: "Yeseva One", cursive;
+  font-size: 80px;
+  text-shadow: 2px 2px 5px black;
+}
+/* MEDIA Q @ 780px
+FONT SIZE 50% */

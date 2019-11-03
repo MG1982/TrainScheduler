@@ -19,30 +19,37 @@
     <!-- Style CSS -->
     <link rel="stylesheet" href="./assests/css/style.css" />
 
-      <!-- Firebase References -->
+  <!-- Firebase References -->
   <script src="https://www.gstatic.com/firebasejs/6.0.4/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/6.0.4/firebase-database.js"></script>
 
   <!-- Moment.js Reference -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
     <title>Train Scheduler</title>
+    <!-- Font Awesome v5 -->
+    <script src="https://kit.fontawesome.com/217b4c9acd.js" crossorigin="anonymous"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Yeseva+One|Zilla+Slab+Highlight&display=swap" rel="stylesheet">
   </head>
   <body>
     <div class="container">
-      <div class="jumbotron text-center">
-        <h1 class="display-4">TRAIN SCHEDULER</h1>
-        <hr class="my-4" />
+      <div class="jumbotron text-success text-center">
+        <h1 class="title-main">PERTH</h1><h1 class="title-second">Train Scheduler</h1>
         
        <!-- Button trigger modal -->
        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addTrainModal">
-        Add Train
+        <i class="fas fa-plus"></i> Add Train
       </button>
-      <p class="current-time text-right" id="clock">Loading...</p>
+      
       </div>
       <div class="card mb-4">
-        <div class="card-header bg-dark text-light">
-          <h2 class="col">Current Train Schedule</h2>
-        </div>
+        <div class="card-header">
+          <div class="row">
+          <div class="col-6 text-success"><h3><i class="fas fa-subway"></i>    Current Train Schedule  
+            <br>
+            <span id="date"></span></h3> </div><div class="col-6"> <h3 class="current-time text-success text-right" id="clock">Loading...</h3><button type="button" class="btn btn-success float-right" id="refresh"><i class="fas fa-redo-alt"></i>   Refresh</button>
+              
+        </div></div>
         <div class="card-body">
           <table class="table">
             <thead>
@@ -59,7 +66,7 @@
           </table>
         </div>
       </div>
-      
+      </div>
 
 
 <!-- Modal -->
@@ -69,7 +76,7 @@
     <div class="modal-content">
       <div class="modal-header">
         
-        <button type="button" class="btn btn-primary" id="add-train"><h5 class="modal-title" id="exampleModalLabel">Add Train</h5></button> 
+        <button type="button" class="btn btn-primary" id="add-train"><h5 class="modal-title" id="exampleModalLabel"><i class="fas fa-plus"></i>    Add Train</h5></button> 
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>

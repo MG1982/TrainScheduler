@@ -98,13 +98,16 @@ $(document).ready(function() {
     newrow.append($("<td class='text-center'>" + minToArrival + "</td>"));
     newrow.append(
       $(
-        "<td class='text-center'><button class='arrival btn btn-danger btn-xs' data-key='" +
+        "<td class='text-center'><button class='arrival btn btn-outline-danger btn-xs' data-key='" +
           key +
           "'>X</button></td>"
       )
     );
-
+    // Add generated row to html
     $("#add-train-row").append(newrow);
+  });
+  $("#refresh").on("click", function() {
+    window.location.reload();
   });
 
   // Remove button with page refresh after click
@@ -119,13 +122,18 @@ $(document).ready(function() {
 
   // Current Time display on page
   function currentTime() {
-    let current = moment().format("HH:mm A");
-    $("#clock").html(current);
+    let current = moment().format("HH:mm:ss A");
+    $("#clock").html("<i class='far fa-clock'></i>  " + current);
     setTimeout(currentTime, 1000);
+  }
+  function currentDate() {
+    let date = moment().format("dddd, MMMM, Do, YYYY ");
+    $("#date").html("<h5>" + date + "</h5>");
   }
 
   // Calls live page clock function
   currentTime();
+  currentDate();
 
   //Page reload to update train times every 60 seconds
   setInterval(function() {
