@@ -14,10 +14,11 @@
 - Moment.js
 - Firebase
 
-## ![Screenshot of game](assets/images/screenshot.jpg)
+## ![Screenshot of game](./assets/images/screenshot.jpg)
 
 ## Features:
 
+- Mobile Responsive.
 - Displays current date and time.
 - When adding trains, administrators can submit the following:
   Train Name,

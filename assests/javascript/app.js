@@ -47,7 +47,7 @@ $(document).ready(function() {
       dateAdded: firebase.database.ServerValue.TIMESTAMP
     };
 
-    // Checks for correct time input and checks that all fields are not black before uploading to the database
+    // Checks for correct time input and checks that all fields are not blank before uploading to the database
     time = $("#first-train").val();
     isValid = /^(?:[01][0-9]|2[0-3]):[0-5][0-9](?::[0-5][0-9])?$/.test(time);
 
@@ -106,9 +106,6 @@ $(document).ready(function() {
     // Add generated row to html
     $("#add-train-row").append(newrow);
   });
-  $("#refresh").on("click", function() {
-    window.location.reload();
-  });
 
   // Remove button with page refresh after click
   $(document).on("click", ".arrival", function() {
@@ -127,7 +124,7 @@ $(document).ready(function() {
     setTimeout(currentTime, 1000);
   }
   function currentDate() {
-    let date = moment().format("dddd, MMMM, Do, YYYY ");
+    let date = moment().format("dddd MMMM Do YYYY ");
     $("#date").html("<h5>" + date + "</h5>");
   }
 
