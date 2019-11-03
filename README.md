@@ -14,7 +14,7 @@
 - Moment.js
 - Firebase
 
-## ![Screenshot of game](./assets/images/screenshot.jpg)
+## ![Screenshot of game](/assets/images/screenshot.jpg)
 
 ## Features:
 
