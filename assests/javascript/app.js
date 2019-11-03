@@ -84,10 +84,10 @@ $(document).ready(function() {
     // New row generator
     let newrow = $("<tr>");
     newrow.append(
-      $("<td class='text-center>" + childSnapshot.val().trainName + "</td>")
+      $("<td class='text-center'>" + childSnapshot.val().trainName + "</td>")
     );
     newrow.append(
-      $("<td class='text-center>" + childSnapshot.val().destination + "</td>")
+      $("<td class='text-center'>" + childSnapshot.val().destination + "</td>")
     );
     newrow.append(
       $("<td class='text-center'>" + childSnapshot.val().frequency + "</td>")
@@ -116,6 +116,7 @@ $(document).ready(function() {
       .remove();
     window.location.reload();
   });
+
   // Current Time display on page
   function currentTime() {
     let current = moment().format("HH:mm A");
@@ -128,6 +129,9 @@ $(document).ready(function() {
 
   //Page reload to update train times every 60 seconds
   setInterval(function() {
-    window.location.reload();
+    if ($(".modal").is(":visible")) {
+    } else {
+      window.location.reload();
+    }
   }, 60000);
 });
