@@ -3,8 +3,10 @@ body {
   background-size: cover;
   font-family: Arial, Helvetica, sans-serif;
 }
-.jumbotron {
-  background: none;
+.poster {
+  background-color: rgba(255, 255, 255, 0.6);
+  padding: 60px 20px;
+  margin: 20px 0px;
 }
 .title-main {
   font-family: "Zilla Slab Highlight", cursive;
@@ -16,6 +18,7 @@ body {
   font-size: 80px;
   text-shadow: 2px 2px 5px black;
 }
+
 @media (max-width: 768px) {
   body {
     font-size: 11px;

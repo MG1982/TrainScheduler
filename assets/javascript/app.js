@@ -50,25 +50,23 @@ $(document).ready(function() {
     // Checks for correct time input and checks that all fields are not blank before uploading to the database
     time = $("#first-train").val();
     isValid = /^(?:[01][0-9]|2[0-3]):[0-5][0-9](?::[0-5][0-9])?$/.test(time);
-
-    if (isValid === false) {
-      alert("Incorrect time entry");
-    }
     if (
+      isValid === false ||
       trainName === "" ||
       destination === "" ||
       firstTrainTime === "" ||
       frequency === ""
     ) {
-      alert("Fill in all data fields please");
+      alert(
+        "ERROR: Incorrect time entry or empty field - Please follow the examples in the text areas of the form"
+      );
     } else {
-      if (isValid === true) {
-        database.ref().push(newTrain);
-        $("form")[0].reset();
-        $("#addTrainModal .close").click();
-      }
+      database.ref().push(newTrain);
+      $("form")[0].reset();
+      $("#addTrainModal .close").click();
     }
   });
+
   // Math for Next Arrival Time and Minutes Away
   database.ref().on("child_added", function(childSnapshot) {
     let startTimeConverted = moment(
@@ -103,11 +101,12 @@ $(document).ready(function() {
           "'>X</button></td>"
       )
     );
+
     // Add generated row to html
     $("#add-train-row").append(newrow);
   });
 
-  // Remove button with page refresh after click
+  // Remove button with page refresh on click
   $(document).on("click", ".arrival", function() {
     keyref = $(this).attr("data-key");
     database
@@ -117,20 +116,21 @@ $(document).ready(function() {
     window.location.reload();
   });
 
-  // Current Time display on page
+  // Current Time display on page function
   function currentTime() {
     let current = moment().format("HH:mm:ss A");
     $("#clock").html("<i class='far fa-clock'></i>  " + current);
     setTimeout(currentTime, 1000);
   }
+  //  Current Date display on html function
   function currentDate() {
     let date = moment().format("dddd MMMM Do YYYY ");
     $("#date").html("<h5>" + date + "</h5>");
   }
 
-  // Calls live page clock function
-  currentTime();
+  // Calls live date and clock function
   currentDate();
+  currentTime();
 
   //Page reload to update train times every 60 seconds
   setInterval(function() {
